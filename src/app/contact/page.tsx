@@ -1,6 +1,7 @@
 'use client'
 import Button from '@/components/buttons/Button'
-import { Fragment, useState } from 'react'
+import { LayoutContext } from '@/contexts/layout'
+import { Fragment, useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
@@ -8,7 +9,7 @@ const Contact = () => {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [message, setMessage] = useState<string>('')
-
+  const { closeMenu} = useContext(LayoutContext)
   const handleSubmit = () => {
     setName('')
     setEmail('')
@@ -17,7 +18,7 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <div className="flex justify-center p-4">
+      <div className="flex justify-center p-4" onClick={closeMenu}>
         <div className="w-1/3 bg-blue-900 rounded-md">
           <h1 className="p-4 text-center text-3xl text-white">{t('contact_us.title')}</h1>
           <div className="flex items-center justify-center bg-white p-2">

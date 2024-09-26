@@ -1,6 +1,7 @@
 'use client'
 import NotFound from '@/components/partials/Notfound'
 import { DataContext } from '@/contexts/data'
+import { LayoutContext } from '@/contexts/layout'
 import cx from 'classnames'
 import { Fragment, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -12,17 +13,19 @@ const Inbox: React.FC<InboxProps> = () => {
     t,
     i18n: { language },
   } = useTranslation()
+  
+  const {closeMenu} = useContext(LayoutContext)
   const { histories, findStation, findTicket, updateHistory } = useContext(DataContext)
 
   return (
     <Fragment>
-      <div className="flex w-full flex-col gap-4">
+      <div className="flex w-full flex-col gap-4 p-4" onClick={closeMenu}>
         {histories.length > 0 ? (
           histories.map((item, index) => {
             const ticket = findTicket(item.ticketId)
             return (
               ticket && (
-                <div key={index} className="flex justify-center">
+                <div key={index} className="flex justify-center" >
                   <button
                     key={index}
                     disabled={!!item.readAt}

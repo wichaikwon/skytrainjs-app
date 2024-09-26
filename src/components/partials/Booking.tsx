@@ -23,7 +23,7 @@ import BankSVG from '../svg/BankSVG'
 import ReverseSVG from '../svg/ReverseSVG'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
-import Img from 'next/image'
+
 const Booking: React.FC = () => {
   const {
     t,
@@ -282,7 +282,7 @@ const Booking: React.FC = () => {
               <Fragment>
                 <div className="p-4 ">
                   <div className="flex flex-col items-center justify-center gap-4">
-                      <Img src="/qr-code.png" className=' w-32' alt='qrcode' />
+                      <img src="/qr-code.png" className=' w-32' alt='qrcode' />
                     <div className="flex flex-col gap-5">
                       <span>{t('home_page.booking.step.2.message.0')}</span>
                       <span>{t('home_page.booking.step.2.message.1', { bookingId: id })}</span>

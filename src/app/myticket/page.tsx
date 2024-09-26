@@ -6,8 +6,8 @@ import React, { Fragment, useContext, useState } from 'react'
 import ArrowNarrowRightSVG from '@/components/svg/ArrowNarrowRightSVG'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import Img from 'next/image'
 import NotFound from '@/components/partials/Notfound'
+import { LayoutContext } from '@/contexts/layout'
 interface TicketDetailProps {
   ticket?: Ticket
   isFull?: boolean
@@ -46,7 +46,7 @@ const TicketDetail: React.FC<TicketDetailProps> = ({ ticket, isFull, onClose }) 
           </div>
           {isFull && (
             <div className="flex flex-col gap-2 justify-center items-center">
-              <Img src="/qr-code.png" className='w-32' alt='qrcode' />
+              <img src="/qr-code.png" className='w-32' alt='qrcode' />
               <div className="flex justify-evenly gap-4">
                 {ticket.status === 'pending' && (
                   <button
@@ -92,6 +92,7 @@ const MyTicket = () => {
   const { tickets } = useContext(DataContext)
   const [isOpenTicket, setIsOpenTicket] = useState(false)
   const [ticket, setTicket] = useState<Ticket>()
+  const {closeMenu} = useContext(LayoutContext)
   const openTicket = (id: string) => {
     const ticket = tickets.find((item) => item.id === id)
     setTicket(ticket)
@@ -114,7 +115,7 @@ const MyTicket = () => {
           <TicketDetail ticket={ticket} isFull onClose={onClose} />
         </div>
       </div>
-        <div className="grid w-full grid-cols-4 items-center justify-center gap-4 p-2">
+        <div className="grid w-full grid-cols-4 items-center justify-center gap-4 p-2" onClick={closeMenu}>
           {tickets.map((item, idx) => (
             <button
               key={idx}

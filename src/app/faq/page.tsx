@@ -1,12 +1,14 @@
 'use client'
-import { Fragment } from 'react'
+import { LayoutContext } from '@/contexts/layout'
+import { Fragment, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Faq = () => {
   const { t } = useTranslation()
+  const {closeMenu} = useContext(LayoutContext)
   return (
     <Fragment>
-      <div className="flex w-full flex-col gap-2 text-white p-2">
+      <div className="flex w-full flex-col gap-2 text-white p-2" onClick={closeMenu}>
         {[1, 2, 3, 4, 5].map((_, index) => (
           <div key={index} className="flex justify-center">
             <div className="flex w-2/3 flex-col gap-2 overflow-hidden rounded-lg bg-blue-900 px-10 py-4 shadow-lg">

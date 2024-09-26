@@ -24,15 +24,50 @@ const Sidebar: React.FC = () => {
   const getIcon = (path: string) => {
     switch (path) {
       case 'myticket':
-        return <TicketSVG className="h-8 w-8" />
+        return (
+          <TicketSVG
+            className={cn(
+              isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
+        )
       case 'inbox':
-        return <InboxSVG className="h-8 w-8" />
+        return (
+          <InboxSVG
+            className={cn(
+              isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
+        )
       case 'contact':
-        return <PhoneSVG className="h-8 w-8" />
+        return (
+          <PhoneSVG
+            className={cn(
+              isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
+        )
       case 'faq':
-        return <InformationSVG className="h-8 w-8" />
+        return (
+          <InformationSVG
+            className={cn(
+              isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
+        )
       default:
-        return <HomeSVG className="h-8 w-8" />
+        return (
+          <HomeSVG
+            className={cn(
+              isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
+        )
     }
   }
 
@@ -52,15 +87,30 @@ const Sidebar: React.FC = () => {
           'z-40 flex items-center justify-center bg-blue-950 p-2 text-white transition-[width] duration-500',
           isMenuOpen ? 'w-72' : 'w-20'
         )}>
-        <button className="flex flex-col gap-10" onClick={isMenuOpen ? closeMenu : openMenu}>
-          <MenuSVG className={cn(isMenuOpen ? 'hidden' : 'opacity-100', 'h-10 w-10')} />
+        <button className="flex flex-col gap-10" onClick={openMenu}>
+          <MenuSVG
+            className={cn(
+              isMenuOpen ? 'fixed -translate-x-40' : 'opacity-100',
+              'h-10 w-10 transition-all duration-500'
+            )}
+          />
         </button>
         <div
-          className={cn('flex flex-col gap-10', isMenuOpen ? 'opacity-100' : 'hidden')}
+          className={cn('flex flex-col gap-10', isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40')}
           onClick={(e) => e.stopPropagation()}>
           <button className="flex items-center gap-4" onClick={() => router.push('/')}>
-            <HomeSVG className="h-8 w-8" />
-            <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'w-32 flex-grow text-left')}>
+            <HomeSVG
+              className={cn(
+                isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+                'h-10 w-10 transition-all duration-500'
+              )}
+            />
+            <span
+              className={cn(
+                isMenuOpen ? 'opacity-100' : 'fixed -translate-x-40 opacity-0',
+                'text-xl',
+                'w-32 flex-grow text-left transition-all duration-500'
+              )}>
               {t(`layout.sidebar.home_page`)}
             </span>
           </button>
@@ -73,11 +123,19 @@ const Sidebar: React.FC = () => {
                 onChangeState(item), router.push(`/${item}`)
               }}>
               {getIcon(`${item}`)}
-              <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'w-32 flex-grow text-left')}>
+              <span
+                className={cn(
+                  isMenuOpen ? 'opacity-100 translate-x-0' : 'fixed -translate-x-40 opacity-0',
+                  'w-32 flex-grow text-left text-xl transition-all duration-500'
+                )}>
                 {t(`layout.sidebar.${item}`)}
               </span>
               {item === 'inbox' && histories.filter((ticket) => !ticket.readAt).length > 0 && (
-                <div className="flex h-4 w-4 items-center justify-center rounded-full bg-red-500">
+                <div
+                  className={cn(
+                    isMenuOpen ? 'opacity-100 ' : 'fixed -translate-x-40 opacity-0',
+                    'flex h-4 w-4 items-center justify-center rounded-full bg-red-500 transition-all duration-500'
+                  )}>
                   <span className="text-xs text-white">{histories.filter((ticket) => !ticket.readAt).length}</span>
                 </div>
               )}

@@ -4,6 +4,7 @@ import { createContext, useState } from 'react'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import Footer from '@/components/navigations/Footer'
+import NotSupported from '@/components/navigations/Notsuported'
 
 interface LayoutContextProps {
   isMenuOpen: boolean
@@ -64,6 +65,7 @@ export const LayoutContextProvider: React.FC<LayoutProviderProps> = ({ children 
       <div className="flex min-h-screen flex-col bg-gray-100 max-xl:hidden">
         <div className="flex flex-grow">
           <Sidebar />
+          <NotSupported />
           <div className="flex w-full flex-col">
             <div className="relative">
               <img src="/banner.jpg" className="h-48 w-full object-cover brightness-75" alt='banner' />
@@ -71,7 +73,7 @@ export const LayoutContextProvider: React.FC<LayoutProviderProps> = ({ children 
                 {t(`layout.sidebar.${getBannerText()}`)}
               </h1>
             </div>
-            <div className="text-center">{children}</div>
+            <div className="text-center" onClick={closeMenu}>{children}</div>
           </div>
         </div>
         <Footer className="sticky" />
