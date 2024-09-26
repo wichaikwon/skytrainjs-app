@@ -1,0 +1,167 @@
+{
+    "translation": {
+      "lang": "en",
+      "misc": {
+        "under_construction": "Sorry, this page is under construction.",
+        "not_supported": "Sorry, this page is not supported on your device.",
+        "not_found": "Sorry, this page is not found.",
+        "no_data": "No data found.",
+        "lines": {
+          "purple": "Purple Line",
+          "blue": "Blue Line",
+          "green": "Green Line",
+          "yellow": "Yellow Line"
+        },
+        "status": {
+          "paid": "Paid",
+          "pending": "Pending",
+          "cancelled": "Cancelled"
+        }
+      },
+      "layout": {
+        "sidebar": {
+          "home_page": "Home",
+          "myticket": "My Ticket",
+          "inbox": "Inbox",
+          "contact": "Contact Us",
+          "faq": "FAQ"
+        }
+      },
+      "home_page": {
+        "maps": {
+          "title": "Maps"
+        },
+        "head" :{
+
+          "title" : "Fare Calculation"
+        },
+        "booking": {
+          "title": "Booking",
+          "step": [
+            {
+              "title": "Step 1",
+              "field": {
+                "from": {
+                  "label": "Origin",
+                  "placeholder": "Select station"
+                },
+                "to": {
+                  "label": "Destination",
+                  "placeholder": "Select station"
+                },
+                "date": {
+                  "label": "Date",
+                  "text" : "Date"
+                },
+                "amount": {
+                  "label": "Amount",
+                  "unit": "ticket(s)"
+                },
+                "price": {
+                  "unit": "baht"
+                }
+              },
+              "unavailable": "Unavailable",
+              "interchange": "* Interchange station. You can see the same station name in other lines.",
+              "submit": "Next"
+            },
+            {
+              "title": "Step 2",
+              "field": {
+                "payment_method": {
+                  "label": "Payment Method",
+                  "options": {
+                    "crypto": "Cryptocurrency",
+                    "promptpay": "PromptPay",
+                    "creditcard": "Credit Card",
+                    "banktransfer": "Bank Transfer"
+                  }
+                }
+              },
+              "info": {
+                "button": "Click to see more details",
+                "title": "Route Details",
+                "blue": "From/To Station",
+                "green": "Interchange Station",
+                "gray": "Number of Stations"
+              },
+              "submit": "Next"
+            },
+            {
+              "title": "Step 3",
+              "message": ["Booking ID", "Your booking ID is {{bookingId}}", "Please pay within 24 hours"],
+              "qr_code": ["Scan QR Code", "or", "Click button below to pay"],
+              "submit": "Confirm Booking"
+            }
+          ]
+        }
+      },
+      "my_ticket": {
+        "message": [
+          "The booking ID is {{ticketId}}",
+          "Number of {{amount}} seats",
+          "Pay via {{paymentMethod}}",
+          "Departure date "
+        ],
+        "test": {
+          "label": "Click status to change ticket status (for testing)",
+          "button": {
+            "paid": "Paid",
+            "cancelled": "Cancelled"
+          }
+        },
+        "footer": "ราคา {{price}} บาท"
+      },
+      "inbox": {
+        "message": "Your ticket from {{from}} to {{to}} {{action}}",
+        "action": {
+          "pending": "is waiting for payment",
+          "paid": "has been paid",
+          "cancelled": "has been cancelled"
+        }
+      },
+      "contact_us": {
+        "title": "Contact Us",
+        "field": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Enter your name"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Enter your email"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Enter your message"
+          }
+        },
+        "submit": "Send"
+      },
+      "faq": {
+        "remark": "FAQ is for sample data only",
+        "questions": [
+          {
+            "question": "Where can I buy tickets?",
+            "answer": "You can buy tickets at ticket counters or ticket vending machines."
+          },
+          {
+            "question": "Can I buy tickets in advance?",
+            "answer": "You can buy tickets in advance up to 30 days."
+          },
+          {
+            "question": "Can I change my travel time?",
+            "answer": "You can change your travel time by contacting the ticket counter."
+          },
+          {
+            "question": "Can I change my origin or destination?",
+            "answer": "You can change your origin or destination by contacting the ticket counter."
+          },
+          {
+            "question": "Can I change my route?",
+            "answer": "You can change your route by contacting the ticket counter."
+          }
+        ]
+      }
+    }
+  }
