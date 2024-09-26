@@ -9,7 +9,7 @@ export const isInterchange = (stationId: string) => (interchanges.includes(stati
 // create bidirectional connections from stations to calculate the shortest path
 // https://www.geeksforgeeks.org/bidirectional-search/
 const generateGraph = () => {
-  let graph = new Map<string, string[]>()
+  const graph = new Map<string, string[]>()
 
   for (let i = 0; i < stations.length; i++) {
     graph.set(stations[i].id, [])
@@ -57,9 +57,9 @@ const generateGraph = () => {
 // calculate the shortest path from the fromId to the toId with Dijkstra's Algorithm
 // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 const calculateShortestPath = (fromId: string, toId: string, graph: Map<string, string[]>) => {
-  let queue: string[] = []
-  let visited: string[] = []
-  let previous: Map<string, string | null> = new Map()
+  const queue: string[] = []
+  const visited: string[] = []
+  const previous: Map<string, string | null> = new Map()
 
   queue.push(fromId)
   visited.push(fromId)
@@ -90,7 +90,7 @@ const calculateShortestPath = (fromId: string, toId: string, graph: Map<string, 
     }
   }
 
-  let path: string[] = []
+  const path: string[] = []
   let currentId = toId
 
   while (currentId !== fromId) {

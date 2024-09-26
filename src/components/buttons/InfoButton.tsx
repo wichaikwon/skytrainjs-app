@@ -1,6 +1,6 @@
 import { calculateNumberOfStationsBetweenStations, isInterchange } from '@/utils/data'
 import cx from 'classnames'
-import { Fragment, useState, useTransition } from 'react'
+import { Fragment, useState } from 'react'
 import InformationSVG from '../svg/InformationSVG'
 import ArrowNarrowRightSVG from '../svg/ArrowNarrowRightSVG'
 import { useTranslation } from 'react-i18next'
@@ -14,7 +14,7 @@ const InfoButton: React.FC<InfoButtonProps> = ({ fromId = '', toId = '' }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { path } = calculateNumberOfStationsBetweenStations(fromId, toId)
 
-  let simplifiedPath = [] as string[]
+  const simplifiedPath = [] as string[]
 
   let stationCount = 0
   for (let i = 0; i < path.length; i++) {

@@ -7,7 +7,7 @@ import NotFound from '@/app/notfound/page'
 import ArrowNarrowRightSVG from '@/components/svg/ArrowNarrowRightSVG'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-
+import Img from 'next/image'
 interface TicketDetailProps {
   ticket?: Ticket
   isFull?: boolean
@@ -46,7 +46,7 @@ const TicketDetail: React.FC<TicketDetailProps> = ({ ticket, isFull, onClose }) 
           </div>
           {isFull && (
             <div className="flex flex-col gap-2 justify-center items-center">
-              <img src="/qr-code.png" className='w-32' />
+              <Img src="/qr-code.png" className='w-32' alt='qrcode' />
               <div className="flex justify-evenly gap-4">
                 {ticket.status === 'pending' && (
                   <button

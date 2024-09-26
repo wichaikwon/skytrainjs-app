@@ -26,10 +26,7 @@ interface LayoutProviderProps {
 }
 
 export const LayoutContextProvider: React.FC<LayoutProviderProps> = ({ children }) => {
-  const {
-    t,
-    i18n: { language },
-  } = useTranslation()
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [state, setState] = useState('home_page')
 
@@ -64,22 +61,20 @@ export const LayoutContextProvider: React.FC<LayoutProviderProps> = ({ children 
         currentState: state,
         onChangeState,
       }}>
-      <div className="flex flex-col min-h-screen bg-gray-100  max-xl:hidden">
+      <div className="flex min-h-screen flex-col bg-gray-100 max-xl:hidden">
         <div className="flex flex-grow">
           <Sidebar />
-          <div className="w-full flex flex-col ">
+          <div className="flex w-full flex-col">
             <div className="relative">
-              <img src="/banner.jpg" className="h-48 w-full object-cover brightness-75" />
+              <img src="/banner.jpg" className="h-48 w-full object-cover brightness-75" alt='banner' />
               <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl text-white">
                 {t(`layout.sidebar.${getBannerText()}`)}
               </h1>
             </div>
-            <div className=" text-center">
-              {children}
-            </div>
+            <div className="text-center">{children}</div>
           </div>
         </div>
-        <Footer className='sticky' />
+        <Footer className="sticky" />
       </div>
     </LayoutContext.Provider>
   )

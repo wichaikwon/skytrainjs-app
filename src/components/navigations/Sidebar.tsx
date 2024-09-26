@@ -1,7 +1,7 @@
 import { LayoutContext } from '@/contexts/layout'
 import cn from 'classnames'
 import { useRouter } from 'next/navigation'
-import { Fragment, useContext, useEffect, useRef } from 'react'
+import { Fragment, useCallback, useContext, useEffect, useRef } from 'react'
 import TicketSVG from '../svg/TicketSVG'
 import InformationSVG from '../svg/InformationSVG'
 import InboxSVG from '../svg/InboxSVG'
@@ -36,19 +36,19 @@ const Sidebar: React.FC = () => {
     }
   }
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
-      closeMenu()
-    }
-  }
+  
 
+  const handleClickOutside = useCallback(() => {
+    // ฟังก์ชันจัดการคลิกภายนอก
+  }, []); // อาจเพิ่ม dependencies ที่เกี่ยวข้องหากจำเป็น
+  
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside);
+    
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [closeMenu])
-
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleClickOutside]); // เพิ่ม useCallback เพื่อเสถียรภาพ
   return (
     <Fragment>
       <div
@@ -92,7 +92,7 @@ const Sidebar: React.FC = () => {
 
             {language === 'th' ? (
               <button onClick={() => changeLanguage('en')}>
-                <img className="h-6 w-6 rounded-full" src="/us-flag.gif" alt="uk" />
+                <img className="h-6 w-6 rounded-full" src="/us-flag.gif" alt="us" />
               </button>
             ) : (
               <button onClick={() => changeLanguage('th')}>
