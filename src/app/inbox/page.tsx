@@ -1,9 +1,9 @@
 'use client'
+import NotFound from '@/components/partials/Notfound'
 import { DataContext } from '@/contexts/data'
 import cx from 'classnames'
 import { Fragment, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import NotFound from '@/app/notfound/page'
 
 interface InboxProps {}
 

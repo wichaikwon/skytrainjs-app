@@ -3,11 +3,11 @@ import { DataContext } from '@/contexts/data'
 import { Ticket } from '@/types/dto'
 import { isExpired, formatDate } from '@/utils/date'
 import React, { Fragment, useContext, useState } from 'react'
-import NotFound from '@/app/notfound/page'
 import ArrowNarrowRightSVG from '@/components/svg/ArrowNarrowRightSVG'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import Img from 'next/image'
+import NotFound from '@/components/partials/Notfound'
 interface TicketDetailProps {
   ticket?: Ticket
   isFull?: boolean

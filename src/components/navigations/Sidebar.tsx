@@ -36,19 +36,14 @@ const Sidebar: React.FC = () => {
     }
   }
 
-  
+  const handleClickOutside = useCallback(() => {}, [])
 
-  const handleClickOutside = useCallback(() => {
-    // ฟังก์ชันจัดการคลิกภายนอก
-  }, []); // อาจเพิ่ม dependencies ที่เกี่ยวข้องหากจำเป็น
-  
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [handleClickOutside]); // เพิ่ม useCallback เพื่อเสถียรภาพ
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [handleClickOutside])
   return (
     <Fragment>
       <div
@@ -61,12 +56,11 @@ const Sidebar: React.FC = () => {
           <MenuSVG className={cn(isMenuOpen ? 'hidden' : 'opacity-100', 'h-10 w-10')} />
         </button>
         <div
-          className={cn('flex flex-col gap-10 ', isMenuOpen ? 'opacity-100' : 'hidden')}
+          className={cn('flex flex-col gap-10', isMenuOpen ? 'opacity-100' : 'hidden')}
           onClick={(e) => e.stopPropagation()}>
-
           <button className="flex items-center gap-4" onClick={() => router.push('/')}>
             <HomeSVG className="h-8 w-8" />
-            <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'flex-grow text-left w-32')}>
+            <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'w-32 flex-grow text-left')}>
               {t(`layout.sidebar.home_page`)}
             </span>
           </button>
@@ -79,7 +73,7 @@ const Sidebar: React.FC = () => {
                 onChangeState(item), router.push(`/${item}`)
               }}>
               {getIcon(`${item}`)}
-              <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'flex-grow text-left w-32')}>
+              <span className={cn(isMenuOpen ? 'opacity-100' : 'hidden', 'text-xl', 'w-32 flex-grow text-left')}>
                 {t(`layout.sidebar.${item}`)}
               </span>
               {item === 'inbox' && histories.filter((ticket) => !ticket.readAt).length > 0 && (
@@ -90,17 +84,17 @@ const Sidebar: React.FC = () => {
             </button>
           ))}
 
-            {language === 'th' ? (
-              <button onClick={() => changeLanguage('en')}>
-                <img className="h-6 w-6 rounded-full" src="/us-flag.gif" alt="us" />
-              </button>
-            ) : (
-              <button onClick={() => changeLanguage('th')}>
-                <img className="h-6 w-6 rounded-full" src="/th-flag.gif" alt="th" />
-              </button>
-            )}
-          </div>
+          {language === 'th' ? (
+            <button onClick={() => changeLanguage('en')}>
+              <img className="h-6 w-6 rounded-full" src="/us-flag.gif" alt="us" />
+            </button>
+          ) : (
+            <button onClick={() => changeLanguage('th')}>
+              <img className="h-6 w-6 rounded-full" src="/th-flag.gif" alt="th" />
+            </button>
+          )}
         </div>
+      </div>
     </Fragment>
   )
 }

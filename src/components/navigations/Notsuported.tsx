@@ -1,4 +1,4 @@
-import NotFound from '@/app/notfound/page'
+import NotFound from "../partials/Notfound"
 
 export const NotSupported = () => {
   return (
